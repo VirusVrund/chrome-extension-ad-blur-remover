@@ -1,0 +1,28 @@
+{
+    "manifest_version": 3,
+    "name": "Ad destroyer and loginbypass",
+    "version": "1.0",
+    "description": "rremove ads, blur effects from websites that require signup",
+    "permissions": [
+        "activeTab",
+        "scripting",
+        "storage"
+    ],
+    "host_permissions": [
+        "<all_urls>"
+    ],
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "run_at": "document_end"
+        }
+    ]
+}

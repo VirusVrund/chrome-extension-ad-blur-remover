@@ -1,0 +1,766 @@
+\chrome\test.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Insights Daily - Premium Content</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-gray: #f5f5f5;
+            --dark-gray: #333;
+            --text-color: #444;
+            --border-color: #ddd;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: white;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 30px;
+        }
+
+        .article {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .article-header {
+            margin-bottom: 20px;
+        }
+
+        .article-title {
+            font-size: 32px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .article-meta {
+            color: #777;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .article-meta img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+
+        .article-content p {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .article-content h2 {
+            font-size: 24px;
+            color: var(--primary-color);
+            margin: 30px 0 15px;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .widget {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .widget-title {
+            font-size: 18px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .popular-posts {
+            list-style: none;
+        }
+
+        .popular-posts li {
+            display: flex;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+
+        .popular-posts li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .popular-posts img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .popular-posts .post-title {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .popular-posts .post-date {
+            font-size: 12px;
+            color: #777;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 40px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            margin-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ccc;
+            font-size: 14px;
+        }
+
+        /* Blur test styles */
+        .content {
+            filter: blur(5px);
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            z-index: 9999;
+        }
+
+        .overlay-content {
+            background-color: var(--primary-color);
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 500px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .overlay-content h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+
+        .overlay-content p {
+            margin-bottom: 25px;
+            font-size: 16px;
+            color: #ccc;
+        }
+
+        .overlay-content button {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .overlay-content button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Advertisement test styles */
+        .ad-banner {
+            width: 100%;
+            height: 90px;
+            background-color: var(--light-gray);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            color: var(--dark-gray);
+            font-size: 16px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .ad-banner::before {
+            content: "Advertisement";
+            position: absolute;
+            top: 2px;
+            right: 5px;
+            font-size: 10px;
+            color: #999;
+        }
+
+        .sidebar-ad {
+            width: 100%;
+            background-color: var(--light-gray);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .sidebar-ad::before {
+            content: "Advertisement";
+            position: absolute;
+            top: 2px;
+            right: 5px;
+            font-size: 10px;
+            color: #999;
+        }
+
+        .sidebar-ad h3 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        .sidebar-ad button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar-ad button:hover {
+            background-color: #c0392b;
+        }
+
+        .sticky-ad {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background-color: rgba(44, 62, 80, 0.9);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .popup-ad {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            z-index: 9998;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s;
+        }
+
+        .close-button:hover {
+            color: var(--accent-color);
+        }
+
+        .popup-ad h2 {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        .popup-ad input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+        }
+
+        .sponsored-content {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .sponsored-tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+        }
+
+        .newsletter-signup {
+            margin: 40px 0;
+            padding: 30px;
+            background-color: #e3f2fd;
+            border: 1px solid #bbdefb;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .newsletter-signup h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .newsletter-signup input {
+            width: 70%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+        }
+
+        .newsletter-signup button {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .newsletter-signup button:hover {
+            background-color: #2980b9;
+        }
+
+        #div-gpt-ad-1234567890-0 {
+            margin: 30px 0;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--light-gray);
+            border: 1px dashed #ccc;
+            font-size: 16px;
+            color: #777;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #div-gpt-ad-1234567890-0::before {
+            content: "Advertisement";
+            position: absolute;
+            top: 5px;
+            left: 10px;
+            font-size: 10px;
+            color: #999;
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .article-image {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+
+            .article {
+                padding: 20px;
+            }
+
+            .article-title {
+                font-size: 24px;
+            }
+
+            .article-image {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Paywall/Blur Test Elements -->
+    <div class="overlay">
+        <div class="overlay-content">
+            <h2>Subscribe to Continue Reading</h2>
+            <p>This article is exclusive to our premium subscribers. Sign up today to access all our content.</p>
+            <button>Subscribe Now</button>
+        </div>
+    </div>
+
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-code"></i>
+                Tech Insights Daily
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">News</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Reviews</a></li>
+                    <li><a href="#">Subscribe</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Ad Test Elements -->
+    <div class="ad-banner">
+        Limited Time Offer: 50% Off Premium Subscriptions - Click Here!
+    </div>
+
+    <div class="main-container">
+        <main>
+            <article class="article content">
+                <div class="article-header">
+                    <h1 class="article-title">The Future of Artificial Intelligence: What to Expect in 2025</h1>
+                    <div class="article-meta">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Author">
+                        <span>By Jonathan Smith | April 5, 2025 | 15 min read</span>
+                    </div>
+                </div>
+
+                <img src="https://images.unsplash.com/photo-1677442135136-760c813dea8a?q=80&w=1000" alt="AI Technology"
+                    class="article-image">
+
+                <div class="article-content">
+                    <p>Artificial Intelligence has been advancing at an unprecedented pace in recent years, transforming
+                        industries and changing the way we live and work. As we approach 2025, the landscape of AI is
+                        set to undergo even more dramatic shifts, with new technologies and applications emerging that
+                        were once the stuff of science fiction.</p>
+
+                    <p>From healthcare to transportation, finance to entertainment, AI is making its presence felt
+                        across virtually every sector. But what can we expect in the coming years? What new
+                        breakthroughs are on the horizon, and how will they impact our daily lives?</p>
+
+                    <h2>The Rise of Generative AI</h2>
+                    <p>Perhaps the most significant development in recent years has been the emergence of generative AI
+                        systems. These powerful models can create content—from text and images to music and code—that is
+                        increasingly indistinguishable from human-created work.</p>
+
+                    <p>By 2025, experts predict that generative AI will become even more sophisticated, with models
+                        capable of producing cinema-quality videos, composing entire musical pieces, and writing complex
+                        software with minimal human input. This has profound implications for creative industries,
+                        potentially automating many tasks currently performed by human creators.</p>
+
+                    <div id="div-gpt-ad-1234567890-0">
+                        <span>New! AI-Powered Home Assistant - Preorder Today with 30% Discount</span>
+                    </div>
+
+                    <h2>AI in Healthcare: Personalized Medicine</h2>
+                    <p>Healthcare is another area where AI is making significant strides. By 2025, we can expect to see
+                        AI-powered systems that can analyze vast amounts of patient data to provide personalized
+                        treatment recommendations, predict disease outbreaks, and even discover new drugs.</p>
+
+                    <p>One particularly promising application is in medical imaging, where AI algorithms can detect
+                        subtle abnormalities that might be missed by human radiologists. This could lead to earlier
+                        detection of conditions like cancer, potentially saving countless lives.</p>
+
+                    <div class="sponsored-content">
+                        <div class="sponsored-tag">Sponsored</div>
+                        <h3>10 Ways AI Is Transforming Business Operations</h3>
+                        <p>Our experts have compiled the best examples of how AI is revolutionizing business efficiency
+                            and decision-making processes. From predictive analytics to customer service automation,
+                            learn how leading companies are staying ahead of the curve...</p>
+                        <button>Read More</button>
+                    </div>
+
+                    <h2>Ethical Considerations and Regulation</h2>
+                    <p>As AI becomes more powerful and pervasive, questions about ethics and regulation are coming to
+                        the forefront. Concerns about privacy, bias, and job displacement are prompting calls for
+                        stronger oversight of AI development and deployment.</p>
+
+                    <p>By 2025, we can expect to see more comprehensive regulatory frameworks governing AI, with a focus
+                        on ensuring transparency, accountability, and fairness. Companies developing AI systems will
+                        increasingly be required to demonstrate that their technologies are safe, ethical, and
+                        beneficial to society.</p>
+
+                    <p>This is particularly important as AI systems are given more autonomy and responsibility in
+                        critical areas such as healthcare, finance, and transportation. Striking the right balance
+                        between innovation and regulation will be one of the key challenges of the coming years.</p>
+                </div>
+            </article>
+
+            <div class="newsletter-signup">
+                <h3>Stay Updated with Our Weekly Tech Digest</h3>
+                <p>Get the latest insights on AI, blockchain, IoT and more delivered directly to your inbox.</p>
+                <input type="email" placeholder="Your email address">
+                <button>Subscribe</button>
+            </div>
+        </main>
+
+        <aside class="sidebar">
+            <div class="sidebar-ad">
+                <h3>Special Offer</h3>
+                <p>Upgrade to Premium for exclusive access to in-depth tech analysis</p>
+                <button>Learn More</button>
+            </div>
+
+            <div class="widget">
+                <h3 class="widget-title">Popular Articles</h3>
+                <ul class="popular-posts">
+                    <li>
+                        <img src="https://images.unsplash.com/photo-1484417894907-623942c8ee29?q=80&w=100"
+                            alt="Blockchain Article">
+                        <div>
+                            <div class="post-title">Blockchain Revolution: Beyond Cryptocurrency</div>
+                            <div class="post-date">March 28, 2025</div>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="https://images.unsplash.com/photo-1563920443079-783e5c786b83?q=80&w=100"
+                            alt="IoT Article">
+                        <div>
+                            <div class="post-title">IoT Security: Protecting Your Smart Home</div>
+                            <div class="post-date">March 20, 2025</div>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="https://static.vecteezy.com/system/resources/previews/023/826/514/large_2x/ai-artificial-intelligence-humanoid-side-portrait-view-with-blue-and-orange-vibrant-neon-and-copy-space-artificial-intelligence-technology-concept-ai-generated-illustration-free-photo.jpg"
+                            alt="Web3 Article">
+                        <div>
+                            <div class="post-title">The Promise of Web3: Decentralized Internet</div>
+                            <div class="post-date">March 15, 2025</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <div class="sticky-ad">
+        Limited Time Offer: Get 50% off our Annual Premium Subscription - Click Here Now!
+    </div>
+
+    <div class="popup-ad">
+        <span class="close-button">×</span>
+        <h2>Join Our Tech Community!</h2>
+        <p>Subscribe to our newsletter and receive exclusive tech insights plus a free ebook on "Future Tech Trends".
+        </p>
+        <input type="email" placeholder="Enter your email">
+        <button
+            style="margin-top: 15px; padding: 8px 15px; background-color: #e74c3c; color: white; border: none; border-radius: 5px; cursor: pointer;">Subscribe
+            Now</button>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>About Us</h3>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Editorial Team</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Categories</h3>
+                <ul>
+                    <li><a href="#">Artificial Intelligence</a></li>
+                    <li><a href="#">Blockchain</a></li>
+                    <li><a href="#">Internet of Things</a></li>
+                    <li><a href="#">Cybersecurity</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">Whitepapers</a></li>
+                    <li><a href="#">Webinars</a></li>
+                    <li><a href="#">Podcasts</a></li>
+                    <li><a href="#">Research Reports</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Connect</h3>
+                <ul>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 Tech Insights Daily. All rights reserved.
+        </div>
+    </footer>
+</body>
+
+</html>
